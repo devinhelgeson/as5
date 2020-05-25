@@ -44,7 +44,6 @@
 */
 public class Dungeon
 {
-	//Here is an example of a change
 
     public static void main(String[] args)
 	{
