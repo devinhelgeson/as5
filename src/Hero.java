@@ -35,11 +35,9 @@ public abstract class Hero extends DungeonCharacter
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
-  public Hero(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax,
-					 double chanceToBlock)
+  public Hero(String name, int hitPoints, double chanceToHit, Attack attack, double chanceToBlock)
   {
-	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
+	super(name, hitPoints, chanceToHit, attack);
 	this.chanceToBlock = chanceToBlock;
 	readName();
   }
@@ -114,7 +112,7 @@ This method is called by: external sources
 ---------------------------------------------------------*/
 	public void battleChoices(DungeonCharacter opponent)
 	{
-	    numTurns = attackSpeed/opponent.getAttackSpeed();
+	    numTurns = this.attack.getAttackSpeed()/opponent.getAttackSpeed();
 
 		if (numTurns == 0)
 			numTurns++;
