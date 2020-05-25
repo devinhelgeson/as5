@@ -18,13 +18,5 @@ public class Skeleton extends Monster
 
     }//end constructor
 
-	public void attack(DungeonCharacter opponent)
-	{
-		System.out.println(name + " slices his rusty blade at " +
-							opponent.getName() + ":");
-		super.attack(opponent);
-
-	}//end override of attack
-
 
 }//end class Skeleton

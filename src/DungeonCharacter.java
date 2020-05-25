@@ -162,6 +162,8 @@ hero classes and externally
 ---------------------------------------------------------*/
 	public void attack(DungeonCharacter opponent)
 	{
+		System.out.println(name + attack.toString() + "at " + opponent.getName() + ":");
+
 		boolean canAttack;
 		int damage;
 

@@ -121,4 +121,8 @@ This method is called by: external sources
 
 	}//end battleChoices
 
+	public void addOneTurns() {
+		this.numTurns++;
+	}
+
 }//end Hero class

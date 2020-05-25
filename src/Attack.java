@@ -127,16 +127,12 @@ class FireBallSpell implements Attack {
     }
 }
 
-class SurpriseAttack implements Attack {
-    private String name = "FireBall";
-    private String readOut = " casts a spell of " + this.name + " ";
+class RegularAttack implements Attack {
+    private String name = "attack";
+    private String readOut = " attacked ";
     private int attackSpeed = 6;
     private int damageMin = 20;
     private int damageMax = 40;
-
-    public SurpriseAttack() {
-
-    }
 
     public String toString() {
         return readOut;
