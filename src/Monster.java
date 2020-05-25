@@ -1,5 +1,3 @@
-
-
 /**
  * Title:
  * Description:
@@ -16,7 +14,7 @@ public abstract class Monster extends DungeonCharacter
 	protected int minHeal, maxHeal;
 
 //-----------------------------------------------------------------
-  public Monster(String name, int hitPoints, double chanceToHit, Attack attack,  double chanceToHeal, int minHeal, int maxHeal)
+  public Monster(String name, int hitPoints, double chanceToHit, Attack attack, double chanceToHeal, int minHeal, int maxHeal)
   {
 	super(name, hitPoints, chanceToHit, attack);
 	this.chanceToHeal = chanceToHeal;

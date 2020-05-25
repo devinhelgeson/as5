@@ -1,5 +1,3 @@
-
-
 /**
  * Title:
  * Description:
@@ -17,7 +15,7 @@ public class Sorceress extends Hero
 	public final int MAX_ADD = 50;
 
 //-----------------------------------------------------------------
-    public Sorceress()
+    protected Sorceress()
 	{
 		super("Sorceress", 75, 5, new FireBallSpell(),  .3);
 

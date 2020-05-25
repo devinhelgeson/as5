@@ -80,11 +80,11 @@ this task
 
 		switch(choice)
 		{
-			case 1: return new Warrior();
+			case 1: return DungeonCharacterFactory.createWarrior();
 
-			case 2: return new Sorceress();
+			case 2: return DungeonCharacterFactory.createSourceress();
 
-			case 3: return new Thief();
+			case 3: return DungeonCharacterFactory.createTheif();
 
 			default: System.out.println("invalid choice, returning Thief");
 				     return new Thief();
@@ -103,11 +103,11 @@ a polymorphic reference (Monster) to accomplish this task.
 
 		switch(choice)
 		{
-			case 1: return new Ogre();
+			case 1: return DungeonCharacterFactory.createOgre();
 
-			case 2: return new Gremlin();
+			case 2: return DungeonCharacterFactory.createGremlin();
 
-			case 3: return new Skeleton();
+			case 3: return DungeonCharacterFactory.createSkeleton();
 
 			default: System.out.println("invalid choice, returning Skeleton");
 				     return new Skeleton();

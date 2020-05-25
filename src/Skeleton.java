@@ -1,5 +1,3 @@
-
-
 /**
  * Title:
  * Description:
@@ -12,7 +10,7 @@
 public class Skeleton extends Monster
 {
 
-    public Skeleton()
+    protected Skeleton()
 	{
 		super("Sargath the Skeleton", 100, .8, new RustyBlade(), .3, 30, 50);
 

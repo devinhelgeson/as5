@@ -1,5 +1,3 @@
-
-
 /**
  * Title:
  * Description:
@@ -12,7 +10,7 @@
 public class Ogre extends Monster
 {
 
-	public Ogre()
+	protected Ogre()
 	{
 		super("Oscar the Ogre", 200, 2, new Club(), .1, 30, 50);
 

@@ -1,5 +1,3 @@
-
-
 /**
  * Title:
  * Description:
@@ -12,7 +10,7 @@
 public class Thief extends Hero
 {
 
-    public Thief()
+    protected Thief()
 	{
 		super("Thief", 75,  .8, new RegularAttack(), .5);
 
