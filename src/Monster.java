@@ -27,15 +27,15 @@ public abstract class Monster extends DungeonCharacter
   public void heal()
   {
 	boolean canHeal;
-	int healPoints;
+	int healAmount;
 
 	canHeal = (Math.random() <= chanceToHeal) && (hitPoints > 0);
 
 	if (canHeal)
 	{
-		healPoints = (int)(Math.random() * (maxHeal - minHeal + 1)) + minHeal;
-		addHitPoints(healPoints);
-		System.out.println(name + " healed itself for " + healPoints + " points.\n"
+		healAmount = (int)(Math.random() * (maxHeal - minHeal + 1)) + minHeal;
+		addHitPoints(healAmount);
+		System.out.println(name + " healed itself for " + healAmount + " points.\n"
 							+ "Total hit points remaining are: " + hitPoints);
 		System.out.println();
 	}//end can heal
