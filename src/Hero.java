@@ -110,14 +110,19 @@ This method is called by: external sources
 ---------------------------------------------------------*/
 	public void battleChoices(DungeonCharacter opponent)
 	{
-	    numTurns = this.attack.getAttackSpeed()/opponent.getAttackSpeed();
+		numberOfTurns(opponent);
+
+	}//end battleChoices
+
+	public void numberOfTurns(DungeonCharacter opponent)
+	{
+		numTurns = this.attack.getAttackSpeed()/opponent.getAttackSpeed();
 
 		if (numTurns == 0)
 			numTurns++;
 
 		System.out.println("Number of turns this round is: " + numTurns);
-
-	}//end battleChoices
+	}
 
 	public void addOneTurns() {
 		this.numTurns++;
