@@ -25,11 +25,11 @@ public class Sorceress extends Hero
 //-----------------------------------------------------------------
 	public void increaseHitPoints()
     {
-	    int hPoints;
+	    int healAmount;
 
-		hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
-		addHitPoints(hPoints);
-		System.out.println(name + " added [" + hPoints + "] points.\n"
+		healAmount = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
+		addHitPoints(healAmount);
+		System.out.println(name + " added [" + healAmount + "] points.\n"
 							+ "Total hit points remaining are: "
 							+ hitPoints);
 		 System.out.println();
