@@ -150,3 +150,53 @@ class RegularAttack implements Attack {
         return this.damageMax;
     }
 }
+
+class Fang implements Attack {
+    private String name = "fang";
+    private String readOut = " bit with her " + this.name;
+    private int attackSpeed = 8;
+    private int damageMin = 15;
+    private int damageMax = 30;
+
+    public String toString() {
+        return readOut;
+    }
+
+    public int getAttackSpeed() {
+        return this.attackSpeed;
+    }
+
+    public int getDamageMin() {
+        return this.damageMin;
+    }
+
+    public int getDamageMax() {
+        return this.damageMax;
+    }
+
+}
+
+class GolfClub implements Attack {
+    private String name = "golf club";
+    private String readOut = " swung his " + this.name;
+    private int attackSpeed = 8;
+    private int damageMin = 15;
+    private int damageMax = 30;
+
+    public String toString() {
+        return readOut;
+    }
+
+    public int getAttackSpeed() {
+        return this.attackSpeed;
+    }
+
+    public int getDamageMin() {
+        return this.damageMin;
+    }
+
+    public int getDamageMax() {
+        return this.damageMax;
+    }
+
+}

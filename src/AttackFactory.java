@@ -7,6 +7,8 @@ public class AttackFactory {
     private static RegularAttack attack = null;
     private static RustyBlade blade = null;
     private static Sword sword = null;
+    private static Fang fang = null;
+    private static GolfClub gc = null;
 
     public static Club ClubFactory() {
         if (club == null) club = new Club();
@@ -36,6 +38,16 @@ public class AttackFactory {
     public static Sword SwordFactory() {
         if(blade == null) sword = new Sword();
         return sword;
+    }
+
+    public static Fang FangFactory() {
+        if(fang == null) fang = new Fang();
+        return fang;
+    }
+
+    public static GolfClub GolfClubFactory() {
+        if(gc == null) gc = new GolfClub();
+        return gc;
     }
 
 }

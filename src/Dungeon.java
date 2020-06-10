@@ -67,6 +67,9 @@ chooseHero allows the user to select a hero, creates that hero, and
 returns it.  It utilizes a polymorphic reference (Hero) to accomplish
 this task
 ---------------------------------------------------------------------*/
+
+
+
 	private static Hero chooseHero()
 	{
 		int choice;
