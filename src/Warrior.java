@@ -16,7 +16,7 @@ public class Warrior extends Hero
     protected Warrior()
 	{
 
-		super("Warrior", 125, 4, new Sword(),  .2);
+		super("Warrior", 125, 4, AttackFactory.SwordFactory(),  .2);
 
 
     }//end constructor

@@ -17,7 +17,7 @@ public class Sorceress extends Hero
 //-----------------------------------------------------------------
     protected Sorceress()
 	{
-		super("Sorceress", 75, 5, new FireBallSpell(),  .3);
+		super("Sorceress", 75, 5, AttackFactory.FireBallSpellFactory(),  .3);
 
 
     }//end constructor

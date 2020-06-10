@@ -12,7 +12,7 @@ public class Thief extends Hero
 
     protected Thief()
 	{
-		super("Thief", 75,  .8, new RegularAttack(), .5);
+		super("Thief", 75,  .8, AttackFactory.RegularAttackFactory(), .5);
 
 
 

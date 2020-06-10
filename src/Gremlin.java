@@ -12,7 +12,7 @@ public class Gremlin extends Monster
 
     protected Gremlin()
 	{
-		super("Gnarltooth the Gremlin", 70, 5, new Kris(), .4,  20, 40);
+		super("Gnarltooth the Gremlin", 70, 5, AttackFactory.KrisFactory(), .4,  20, 40);
 
     }//end constructor
 

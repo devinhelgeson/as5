@@ -12,7 +12,7 @@ public class Skeleton extends Monster
 
     protected Skeleton()
 	{
-		super("Sargath the Skeleton", 100, .8, new RustyBlade(), .3, 30, 50);
+		super("Sargath the Skeleton", 100, .8, AttackFactory.RustyBladeFactory(), .3, 30, 50);
 
     }//end constructor
 
