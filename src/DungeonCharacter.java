@@ -149,7 +149,7 @@ This method is called by: unknown (intended for external use)
 /*-------------------------------------------------------
 attack allows character to attempt attack on opponent.  First, chance to hit
 is considered.  If a hit can occur, then the damage is calculated based on
-character's damage range.  This damage is then applied to the opponenet.
+character's damage range.  This damage is then applied to the opponent.
 
 Receives: opponent being attacked
 Returns: nothing
