@@ -179,9 +179,59 @@ class Fang implements Attack {
 class GolfClub implements Attack {
     private String name = "golf club";
     private String readOut = " swung his " + this.name;
+    private int attackSpeed = 2;
+    private int damageMin = 30;
+    private int damageMax = 70;
+
+    public String toString() {
+        return readOut;
+    }
+
+    public int getAttackSpeed() {
+        return this.attackSpeed;
+    }
+
+    public int getDamageMin() {
+        return this.damageMin;
+    }
+
+    public int getDamageMax() {
+        return this.damageMax;
+    }
+
+}
+
+class Lance implements Attack {
+    private String name = "lance";
+    private String readOut = " poked his " + this.name;
     private int attackSpeed = 8;
     private int damageMin = 15;
     private int damageMax = 30;
+
+    public String toString() {
+        return readOut;
+    }
+
+    public int getAttackSpeed() {
+        return this.attackSpeed;
+    }
+
+    public int getDamageMin() {
+        return this.damageMin;
+    }
+
+    public int getDamageMax() {
+        return this.damageMax;
+    }
+
+}
+
+class Gun implements Attack {
+    private String name = "gun";
+    private String readOut = " shot his " + this.name;
+    private int attackSpeed = 1;
+    private int damageMin = 50;
+    private int damageMax = 100;
 
     public String toString() {
         return readOut;

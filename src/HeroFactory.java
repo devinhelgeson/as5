@@ -12,4 +12,8 @@ public class HeroFactory {
         return new Thief();
     }
 
+    public static Knight createKnight() { return new Knight();}
+
+    public static Soldier createSoldier() { return new Soldier(); }
+
 }

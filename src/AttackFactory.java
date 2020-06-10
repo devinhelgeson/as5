@@ -9,6 +9,8 @@ public class AttackFactory {
     private static Sword sword = null;
     private static Fang fang = null;
     private static GolfClub gc = null;
+    private static Lance lance = null;
+    private static Gun gun = null;
 
     public static Club ClubFactory() {
         if (club == null) club = new Club();
@@ -50,4 +52,13 @@ public class AttackFactory {
         return gc;
     }
 
+    public static Lance LanceFactory() {
+        if(lance == null) lance = new Lance();
+        return lance;
+    }
+
+    public static Gun GunFactory() {
+        if(gun == null) gun = new Gun();
+        return gun;
+    }
 }

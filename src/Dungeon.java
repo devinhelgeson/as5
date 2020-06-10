@@ -78,7 +78,9 @@ this task
 		System.out.println("Choose a hero:\n" +
 					       "1. Warrior\n" +
 						   "2. Sorceress\n" +
-						   "3. Thief");
+						   "3. Thief\n" +
+						   "4. Knight\n" +
+						   "5. Soldier");
 		choice = Keyboard.readInt();
 
 		switch(choice)
@@ -88,6 +90,10 @@ this task
 			case 2: return HeroFactory.createSourceress();
 
 			case 3: return HeroFactory.createTheif();
+
+			case 4: return HeroFactory.createKnight();
+
+			case 5: return HeroFactory.createSoldier();
 
 			default: System.out.println("invalid choice, returning Thief");
 				     return new Thief();
