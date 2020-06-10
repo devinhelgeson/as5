@@ -3,8 +3,10 @@ import java.util.*;
 public class Room {
     private int xAxis;
     private int yAxis;
-    private String item;
-    private String[] shell;
+    private Monster aMonster;
+    public final int MIN_ADD = 5;
+    public final int MAX_ADD = 15;
+    private ArrayList<DungeonItem> items;
     // If its 0,5,10,15
     public Room() {
         new Room(xAxis, yAxis);
@@ -14,43 +16,41 @@ public class Room {
     public Room(int xAxis, int yAxis) {
         this.xAxis = xAxis;
         this.yAxis = yAxis;
-        getPillar();
-        item = roomContains();
-        shell = determineShell(xAxis, yAxis);
+        items = roomContains();
     }
 
-    public String roomContains() {
-        String item = "";
-        if (didItHappen(10)) {
-            item += "P";
+    public ArrayList<DungeonItem> roomContains() {
+        items = new ArrayList<DungeonItem>;
+        if (Probability(10)) {
+            items.add(new HealPotion());
         }
-        if (didItHappen(10)) {
-            item += "H";
+        if (Probability(10)) {
+            items.add(new Pit());
         }
-        if (didItHappen(10)) {
-            item += "V";
+        if (Probability(10)) {
+            items.add(new VisionPotion());
         }
-        return item;
+        //if (Probability(30)) {
+       //     items.add(new Moster());
+       // }
+        return items;
     }
 
-    private String getPillar() {
-
-        return "";
-    }
-
-    private boolean didItHappen(int chance) {
+    private boolean Probability(int chance) {
         Random ran = new Random();
         int num = ran.nextInt(100);
         return (num <= chance);
     }
 
-    public String[] determineShell(int xAxis, int yAxis) {
+    public void healing() {
+        int healAmount;
 
-        return null;
-    }
-
-    public int healing() {
-        return 0;
+        healAmount = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
+        addHitPoints(healAmount);
+        System.out.println(name + " added [" + healAmount + "] points.\n"
+                + "Total hit points remaining are: "
+                + hitPoints);
+        System.out.println();
     }
 
     public int pit() {
