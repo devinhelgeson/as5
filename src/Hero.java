@@ -30,6 +30,10 @@ public abstract class Hero extends DungeonCharacter
 {
 	protected double chanceToBlock;
 	protected int numTurns;
+	protected int MAX_ADD = 15;
+	protected int MIN_ADD = 5;
+	private int DAMAGE_MIN = 1;
+	private int DAMAGE_MAX = 20;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
@@ -95,6 +99,27 @@ public void subtractHitPoints(int hitPoints)
 
 
 	}//end method
+
+public void usePotion() {
+	int healAmount;
+
+	healAmount = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
+	addHitPoints(healAmount);
+	System.out.println(name + " added [" + healAmount + "] points.\n"
+			+ "Total hit points remaining are: "
+			+ hitPoints);
+	System.out.println();
+}
+
+public void fallIntoPit () {
+	int damage = (int)(Math.random() * (this.DAMAGE_MIN - this.DAMAGE_MAX + 1))
+			+ this.DAMAGE_MIN;
+	super.subtractHitPoints(damage);
+}
+
+	public void displayVision() {
+
+	}
 
 /*-------------------------------------------------------
 battleChoices will be overridden in derived classes.  It computes the

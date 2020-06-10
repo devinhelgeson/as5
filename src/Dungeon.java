@@ -46,27 +46,9 @@ public class Dungeon
 {
 	// yo this is gabe
 
-    public static void main(String[] args)
-	{
-
-		Hero theHero;
-		Monster theMonster;
-
-		do
-		{
-		    theHero = chooseHero();
-		    theMonster = generateMonster();
-			battle(theHero, theMonster);
-
-		} while (playAgain());
-
-    }//end main method
-
-/*-------------------------------------------------------------------
-chooseHero allows the user to select a hero, creates that hero, and
-returns it.  It utilizes a polymorphic reference (Hero) to accomplish
-this task
----------------------------------------------------------------------*/
+private Room [][] dungeonInt;
+private int DUNGEON_WIDTH = 5;
+private int DUNGEON_LENGTH = 5;
 	private static Hero chooseHero()
 	{
 		int choice;

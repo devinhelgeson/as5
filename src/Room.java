@@ -20,7 +20,7 @@ public class Room {
     }
 
     public ArrayList<DungeonItem> roomContains() {
-        items = new ArrayList<DungeonItem>;
+        items = new ArrayList<DungeonItem>();
         if (Probability(10)) {
             items.add(new HealPotion());
         }
@@ -31,7 +31,7 @@ public class Room {
             items.add(new VisionPotion());
         }
         //if (Probability(30)) {
-       //     items.add(new Moster());
+       //     items.add(new Monster());
        // }
         return items;
     }
@@ -42,28 +42,6 @@ public class Room {
         return (num <= chance);
     }
 
-    public void healing() {
-        int healAmount;
-
-        healAmount = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
-        addHitPoints(healAmount);
-        System.out.println(name + " added [" + healAmount + "] points.\n"
-                + "Total hit points remaining are: "
-                + hitPoints);
-        System.out.println();
-    }
-
-    public int pit() {
-        return 0;
-    }
-
-    //public door entrance() {
-    //   return null;
-    //}
-
-    public void vision() {
-
-    }
 
     @Override
     public String toString() {
