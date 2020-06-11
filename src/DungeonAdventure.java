@@ -2,6 +2,8 @@ public class DungeonAdventure {
 
     public static void main(String[] args)
     {
+        introduction();
+        howToPlay();
 
         Hero theHero;
         Monster theMonster;
@@ -15,6 +17,23 @@ public class DungeonAdventure {
         } while (playAgain());
 
     }//end main method
+
+    public static void introduction() {
+        System.out.println("Welcome, to The Dungeon.");
+        System.out.println("You, young programmer, have been chosen for a very important mission.");
+        System.out.println("In the dark and musty rooms of this dungeon lies four very important pillars.");
+        System.out.println("These pillars are the very foundation for Objected Oriented Programming.");
+        System.out.println("Without these pillar, programmers around the world will be lost forever.");
+        System.out.println("It is your mission to find these pillars and escape the dungeon to save your fellow programmers from coding chaos.");
+        System.out.println("But first, we have some pointers for your mission");
+        System.out.println("...");
+    }
+
+    public static void howToPlay() {
+        System.out.println("To move around the rooms, use the A, W, S ,D keys");
+        System.out.println("To view your inventory press the E key");
+        System.out.println("Now, we need to choose your hero.");
+    }
 
     /*-------------------------------------------------------------------
     chooseHero allows the user to select a hero, creates that hero, and
@@ -126,6 +145,30 @@ public class DungeonAdventure {
             System.out.println("Quitters never win ;-)");
 
     }//end battle method
+
+    private static char move(Hero theHero) {
+        System.out.println("What direction would you like to go?");
+        System.out.println("Forward(W)");
+        System.out.println("Left(A)");
+        System.out.println("Right(D)");
+        System.out.println("Down(S)");
+
+        char choice = Keyboard.readChar();
+        // Might need to add to the while loop if the direction they choose is out of bounds too.
+        while(choice != 'W' || choice != 'A' || choice != 'D' || choice != 'S') {
+            System.out.println("Not a valid choice, try again.");
+            System.out.println("What direction would you like to go?");
+            System.out.println("Forward(W)");
+            System.out.println("Left(A)");
+            System.out.println("Right(D)");
+            System.out.println("Down(S)");
+
+            choice = Keyboard.readChar();
+        }
+
+        return choice;
+
+    }
 
 
 }
