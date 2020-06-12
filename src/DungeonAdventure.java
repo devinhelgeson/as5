@@ -124,6 +124,10 @@ public class DungeonAdventure {
         return (again == 'Y' || again == 'y');
     }//end playAgain method
 
+    private static boolean willContinue() {
+        return false;
+    }
+
 
     /*-------------------------------------------------------------------
     battle is the actual combat portion of the game.  It requires a Hero

@@ -78,12 +78,12 @@ public class Dungeon
 
 	private void chooseEntrance() {
 		int y = Utilities.randomInt(0, 4);
-		grid[0][y] = new Room(0, y, Entrance.getInstance());
+		grid[y][0] = new Room(0, y, Entrance.getInstance());
 	}
 
 	private void chooseExit() {
 		int y = Utilities.randomInt(0, 4);
-		grid[4][y] = new Room(4, y, Exit.getInstance());
+		grid[y][4] = new Room(4, y, Exit.getInstance());
 	}
 
 	private void placePillars() {
@@ -102,21 +102,63 @@ public class Dungeon
 			Ex = Utilities.randomInt(0, 4);
 			Ey = Utilities.randomInt(0, 4);
 		} while(grid[Ex][Ey] != null);
-		grid[Ex][Ey] = new Room(Ex, Ey, AbstractionPillar.getInstance());
+		grid[Ex][Ey] = new Room(Ex, Ey, EncapsulationPillar.getInstance());
 
 		do{
 			Ix = Utilities.randomInt(0, 4);
 			Iy = Utilities.randomInt(0, 4);
 		} while(grid[Ix][Iy] != null);
-		grid[Ix][Iy] = new Room(Ix, Iy, AbstractionPillar.getInstance());
+		grid[Ix][Iy] = new Room(Ix, Iy, InheritancePillar.getInstance());
 
 		do{
 			Px = Utilities.randomInt(0, 4);
 			Py = Utilities.randomInt(0, 4);
 		} while(grid[Px][Py] != null);
-		grid[Px][Py] = new Room(Px, Py, AbstractionPillar.getInstance());
+		grid[Px][Py] = new Room(Px, Py, PolymorphismPillar.getInstance());
 
 	}
+
+	public String toString() {
+		String str = "";
+
+		for(int x = 0; x < DUNGEON_WIDTH * 2 + 1; x++) str += "*";
+		str += "\n";
+		for(int i = 0; i < DUNGEON_LENGTH; i++) {
+
+			str += "*" + grid[i][0].toString();
+			for(int j = 1; j < DUNGEON_WIDTH; j++) {
+				str += "|" + grid[i][j].toString();
+			}
+			str += "*";
+			if (i < DUNGEON_LENGTH - 1) str += "\n*";
+			for(int k = 0; (k < DUNGEON_WIDTH) && (i < DUNGEON_LENGTH - 1); k++) {
+				str += "-*";
+			}
+			str += "\n";
+		}
+		for(int x = 0; x < DUNGEON_WIDTH * 2 + 1; x++) str += "*";
+
+		return str;
+
+	}
+
+	public String grid() {
+		String str = "";
+
+		for(int i = 0; i < grid.length; i++) {
+			for(int j = 0; j < grid[i].length; j++) {
+				str += grid[i][j].toString();
+			}
+			str += "\n";
+		}
+		return str;
+	}
+
+	public String getCurrentRoom() {
+return null;
+	}
+
+	public String getWithPotion() {return null;}
 
 
 //

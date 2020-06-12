@@ -51,5 +51,9 @@ public abstract class Monster extends DungeonCharacter implements DungeonItem
 
  }//end method
 
+	public String toString() {
+  	return "X";
+	}
+
 
 }//end Monster class
