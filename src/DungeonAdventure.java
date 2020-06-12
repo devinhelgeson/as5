@@ -20,18 +20,25 @@ public class DungeonAdventure {
         howToPlay();
         player = new User(readName(), chooseHero());
         theDungeon = new Dungeon();
-        System.out.println(theDungeon.getCurrentRoom(theDungeon.getHeroX(), theDungeon.getHeroY()));
 
         // Need to move around in the dungeon and then only battle if a room contains a monster essentially.
         do{
+            System.out.println();
+            System.out.println();
+
             System.out.println("Hitpoints: " + player.getHero().hitPoints);
             System.out.println("Pillars Found: " + player.pillars());
-            System.out.println(theDungeon); //change this depending on visibility
+            System.out.println(theDungeon);
+            System.out.println("users coords " + theDungeon.getLocation().getxAxis() + ", " + theDungeon.getLocation().getyAxis());
+            System.out.println("entrance coords " + theDungeon.getEntrance().getxAxis() + ", " + theDungeon.getEntrance().getyAxis());
+            System.out.println(theDungeon.getCurrentRoom()); //change this depending on visibility
+            move();
 
 
 
 
-            } while (willContinue());
+
+            } while (willContinue()); //isded?
         // Need to add method that checks if the Hero has all of the pillars
 
     }//end main method
@@ -43,7 +50,26 @@ public class DungeonAdventure {
     }//end readName method
 
     private static boolean willContinue() {
-        if(theDungeon.getLocation().equals(theDungeon.getExit())) return false;
+         if(player.getHero().hitPoints <= 0) {
+             System.out.println("You have died.");
+             return false;
+         }
+        if(theDungeon.getLocation().equals(theDungeon.getExit())) {
+            System.out.println("You are about to exit the Dungeon.");
+            if(hasWon()) {
+                System.out.println("Congradulations, you have won.");
+                return false;
+            } else {
+                System.out.println("You have not collected all of the pillars. Are you sure you want to end the game? (y/n)");
+                String answer = Keyboard.readString();
+                if(answer.equals("y")) {
+                    System.out.println("You have lost the game.");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
         return true;
     }
 
@@ -183,7 +209,7 @@ public class DungeonAdventure {
 
     }//end battle method
 
-    private static void move(Hero theHero) {
+    private static void move() {
         System.out.println("What direction would you like to go?");
         System.out.println("Forward(w)");
         System.out.println("Left(a)");

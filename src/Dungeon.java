@@ -51,8 +51,6 @@ public class Dungeon
 	private Room[][] grid = new Room[DUNGEON_LENGTH][DUNGEON_WIDTH];//mey need to be swipswapped
 	private Room entrance;
 	private Room exit;
-	private int HeroX;
-	private int HeroY;
 	private Room location;
 
 
@@ -62,13 +60,15 @@ public class Dungeon
 		placePillars();
 		fillDungeon();
 		this.location = entrance;
-		this.HeroX = 4;
-		this.HeroY = 2;
 
 	}
 
 	public Room getExit() {
 		return exit;
+	}
+
+	public Room getEntrance() {
+		return entrance;
 	}
 
 	public Room getLocation() {
@@ -81,7 +81,7 @@ public class Dungeon
 
 			for(int j = 0; j < grid[i].length; j++) {
 
-				if(grid[i][j] == null) grid[i][j] = new Room(i, j);
+				if(grid[j][i] == null) grid[j][i] = new Room(i, j);
 
 			}
 
@@ -110,51 +110,51 @@ public class Dungeon
 		do{
 			Ax = Utilities.randomInt(0, 4);
 			Ay = Utilities.randomInt(0, 4);
-		} while(grid[Ax][Ay] != null);
-		grid[Ax][Ay] = new Room(Ax, Ay, AbstractionPillar.getInstance());
+		} while(grid[Ay][Ax] != null);
+		grid[Ay][Ax] = new Room(Ax, Ay, AbstractionPillar.getInstance());
 
 		do{
 			Ex = Utilities.randomInt(0, 4);
 			Ey = Utilities.randomInt(0, 4);
-		} while(grid[Ex][Ey] != null);
-		grid[Ex][Ey] = new Room(Ex, Ey, EncapsulationPillar.getInstance());
+		} while(grid[Ey][Ex] != null);
+		grid[Ey][Ex] = new Room(Ex, Ey, EncapsulationPillar.getInstance());
 
 		do{
 			Ix = Utilities.randomInt(0, 4);
 			Iy = Utilities.randomInt(0, 4);
-		} while(grid[Ix][Iy] != null);
-		grid[Ix][Iy] = new Room(Ix, Iy, InheritancePillar.getInstance());
+		} while(grid[Iy][Ix] != null);
+		grid[Iy][Ix] = new Room(Ix, Iy, InheritancePillar.getInstance());
 
 		do{
 			Px = Utilities.randomInt(0, 4);
 			Py = Utilities.randomInt(0, 4);
-		} while(grid[Px][Py] != null);
-		grid[Px][Py] = new Room(Px, Py, PolymorphismPillar.getInstance());
+		} while(grid[Py][Px] != null);
+		grid[Py][Px] = new Room(Px, Py, PolymorphismPillar.getInstance());
 
 	}
 
 	public void left() throws IllegalMoveException {
 		if(this.location.getxAxis() == 0) throw new IllegalMoveException();
-		this.location = grid[this.location.getxAxis() - 1][this.location.getyAxis()];
-		this.location.setxAxis(this.location.getxAxis() - 1);
+		this.location = grid[this.location.getyAxis()][this.location.getxAxis() - 1];
+		//this.location.setxAxis(this.location.getxAxis() - 1);
 	}
 
 	public void right() throws IllegalMoveException {
 		if(this.location.getxAxis() == DUNGEON_WIDTH - 1) throw new IllegalMoveException();
-		this.location = grid[this.location.getxAxis() + 1][this.location.getyAxis()];
-		this.location.setxAxis(this.location.getxAxis() + 1);
+		this.location = grid[this.location.getyAxis()][this.location.getxAxis() + 1];
+		//this.location.setxAxis(this.location.getxAxis() + 1);
 	}
 
 	public void up() throws IllegalMoveException {
 		if(this.location.getyAxis() == 0) throw new IllegalMoveException();
-		this.location = grid[this.location.getxAxis()][this.location.getyAxis() - 1];
-		this.location.setyAxis(this.location.getyAxis() - 1);
+		this.location = grid[this.location.getyAxis() - 1][this.location.getxAxis()];
+		//this.location.setyAxis(this.location.getyAxis() - 1);
 	}
 
 	public void down() throws IllegalMoveException {
 		if(this.location.getyAxis() == DUNGEON_LENGTH - 1) throw new IllegalMoveException();
-		this.location = grid[this.location.getxAxis()][this.location.getyAxis() + 1];
-		this.location.setyAxis(this.location.getyAxis() + 1);
+		this.location = grid[this.location.getyAxis() + 1][this.location.getxAxis()];
+		//this.location.setyAxis(this.location.getyAxis() + 1);
 	}
 
 	public String toString() {
@@ -181,38 +181,32 @@ public class Dungeon
 
 	}
 
-	public String getCurrentRoom(int HeroX, int HeroY) {
+	public String getCurrentRoom() {
 		String room = "";
-		if (HeroY == 0) {
+		if (location.getyAxis() == 0) {
 			room = "***\n";
 		}
 		else {
 			room = "*-*\n";
 		}
-		if (HeroX > 0 || HeroX < 4) {
-			room += "|" + grid[HeroX][HeroY].toString() + "|\n";
+
+		if (location.getxAxis() > 0 && location.getxAxis() < 4) {
+			room += "|" + location.toString() + "|\n";
 		}
-		else if (HeroX == 0 ) {
-			room += "*" + grid[HeroX][HeroY].toString() + "|\n";
+		else if (location.getxAxis() == 0 ) {
+			room += "*" + location.toString() + "|\n";
 		}
 		else {
-			room += "|" + grid[HeroX][HeroY].toString() + "*\n";
+			room += "|" + location.toString() + "*\n";
 		}
-		if (HeroY == 4) {
+
+		if (location.getyAxis() == 4) {
 			room += "***";
 		}
 		else {
 			room+= "*-*";
 		}
 		return room;
-	}
-
-	public int getHeroX() {
-		return this.HeroX;
-	}
-
-	public int getHeroY() {
-		return this.HeroY;
 	}
 
 	public String grid() {
@@ -225,10 +219,6 @@ public class Dungeon
 			str += "\n";
 		}
 		return str;
-	}
-
-	public String getCurrentRoom() {
-		return null;
 	}
 
 	public String getWithPotion() {return null;}
