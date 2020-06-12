@@ -37,7 +37,7 @@ class EncapsulationPillar implements DungeonItem {
     }
 
     public String toString () {
-        return "I";
+        return "1";
     }
 }
 
@@ -88,7 +88,6 @@ class PolymorphismPillar implements DungeonItem {
 
 class Entrance implements DungeonItem {
     private static Entrance uniqueInstance;
-    private Entrance() {}
     public static Entrance getInstance() {
         if (uniqueInstance == null) {
             uniqueInstance = new Entrance();
@@ -116,3 +115,8 @@ class Exit implements DungeonItem {
     }
 }
 
+class EmptyRoom implements DungeonItem {
+    public String toString() {
+        return "E";
+    }
+}

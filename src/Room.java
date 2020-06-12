@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Room {
@@ -6,7 +7,7 @@ public class Room {
     private Monster aMonster;
     public final int MIN_ADD = 5;
     public final int MAX_ADD = 15;
-    private ArrayList<DungeonItem> items;
+    private ArrayList<DungeonItem> items = new ArrayList<DungeonItem>();
     // If its 0,5,10,15
     public Room() {
         new Room(xAxis, yAxis);
@@ -19,24 +20,29 @@ public class Room {
         items = roomContains();
     }
 
+    public Room(int x, int y, DungeonItem item) {
+        this.xAxis = x;
+        this.yAxis = y;
+        this.items.add(item);
+    }
+
     public ArrayList<DungeonItem> roomContains() {
-        items = new ArrayList<DungeonItem>();
         if (Probability(10)) {
             items.add(new HealPotion());
         }
-        if (Probability(10)) {
+        else if (Probability(10)) {
             items.add(new Pit());
         }
-        if (Probability(10)) {
+        else if (Probability(10)) {
             items.add(new VisionPotion());
         }
-        //if (Probability(30)) {
-       //     items.add(new Monster());
-       // }
+        else if (Probability(30)) {
+            items.add(DungeonAdventure.generateMonster());
+        }
         return items;
     }
 
-    private boolean Probability(int chance) {
+    private static boolean Probability(int chance) {
         Random ran = new Random();
         int num = ran.nextInt(100);
         return (num <= chance);
@@ -45,7 +51,9 @@ public class Room {
 
     @Override
     public String toString() {
-       return items.toString();
+       if(items.size() > 1) return "M";
+       if(items.size() <1) return "E";
+       return items.get(0).toString();
     }
 
 

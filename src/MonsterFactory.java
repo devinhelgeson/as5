@@ -12,4 +12,8 @@ public class MonsterFactory {
         return new Skeleton();
     }
 
+    public static Zombie createZombie() { return new Zombie();}
+
+    public static Bat createBat() { return new Bat(); }
+
 }

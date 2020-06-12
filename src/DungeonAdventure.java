@@ -74,11 +74,11 @@ public class DungeonAdventure {
     generateMonster randomly selects a Monster and returns it.  It utilizes
     a polymorphic reference (Monster) to accomplish this task.
     ---------------------------------------------------------------------*/
-    private static Monster generateMonster()
+    public static Monster generateMonster()
     {
         int choice;
 
-        choice = (int)(Math.random() * 3) + 1;
+        choice = (int)(Math.random() * 5) + 1;
 
         switch(choice)
         {
@@ -87,6 +87,10 @@ public class DungeonAdventure {
             case 2: return MonsterFactory.createGremlin();
 
             case 3: return MonsterFactory.createSkeleton();
+
+            case 4: return MonsterFactory.createBat();
+
+            case 5: return MonsterFactory.createZombie();
 
             default: System.out.println("invalid choice, returning Skeleton");
                 return new Skeleton();

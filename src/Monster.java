@@ -8,7 +8,7 @@
  */
 
 
-public abstract class Monster extends DungeonCharacter
+public abstract class Monster extends DungeonCharacter implements DungeonItem
 {
 	protected double chanceToHeal;
 	protected int minHeal, maxHeal;
