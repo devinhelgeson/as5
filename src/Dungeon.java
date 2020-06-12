@@ -133,6 +133,30 @@ public class Dungeon
 
 	}
 
+	public void left() throws IllegalMoveException {
+		if(this.location.getxAxis() == 0) throw new IllegalMoveException();
+		this.location = grid[this.location.getxAxis() - 1][this.location.getyAxis()];
+		this.location.setxAxis(this.location.getxAxis() - 1);
+	}
+
+	public void right() throws IllegalMoveException {
+		if(this.location.getxAxis() == DUNGEON_WIDTH - 1) throw new IllegalMoveException();
+		this.location = grid[this.location.getxAxis() + 1][this.location.getyAxis()];
+		this.location.setxAxis(this.location.getxAxis() + 1);
+	}
+
+	public void up() throws IllegalMoveException {
+		if(this.location.getyAxis() == 0) throw new IllegalMoveException();
+		this.location = grid[this.location.getxAxis()][this.location.getyAxis() - 1];
+		this.location.setyAxis(this.location.getyAxis() - 1);
+	}
+
+	public void down() throws IllegalMoveException {
+		if(this.location.getyAxis() == DUNGEON_LENGTH - 1) throw new IllegalMoveException();
+		this.location = grid[this.location.getxAxis()][this.location.getyAxis() + 1];
+		this.location.setyAxis(this.location.getyAxis() + 1);
+	}
+
 	public String toString() {
 		String str = "";
 

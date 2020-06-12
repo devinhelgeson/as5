@@ -33,20 +33,41 @@ public class Room {
         return yAxis;
     }
 
+    public ArrayList<DungeonItem> getItems() {
+        return items;
+    }
+
+    public void setxAxis(int xAxis) {
+        this.xAxis = xAxis;
+    }
+
+    public void setyAxis(int yAxis) {
+        this.yAxis = yAxis;
+    }
+
     public ArrayList<DungeonItem> roomContains() {
         if (Probability(10)) {
             items.add(new HealPotion());
         }
-        else if (Probability(10)) {
+        if (Probability(10)) {
             items.add(new Pit());
         }
-        else if (Probability(10)) {
+        if (Probability(10)) {
             items.add(new VisionPotion());
         }
-        else if (Probability(30)) {
+        if (Probability(30)) {
             items.add(DungeonAdventure.generateMonster());
         }
+
         return items;
+    }
+
+    public boolean containsMonster() {
+        return false;
+    }
+
+    public Monster getaMonster() {
+        return null;
     }
 
     private static boolean Probability(int chance) {

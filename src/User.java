@@ -25,6 +25,7 @@ public class User {
         return found;
     }
 
-
-
+    public ArrayList<DungeonItem> getInventory() {
+        return inventory;
+    }
 }
