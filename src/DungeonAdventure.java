@@ -11,27 +11,24 @@ public class DungeonAdventure {
     // placePillars method. Devin also created two new hero characters (Soldier&Knight( and two new villans
     // (Bat&Zombie) Devin also created the User class
 
-    public static User player;
-    public static Dungeon theDungeon;
-
-    public static void main(String[] args)
+     public static void main(String[] args)
     {
         introduction();
         howToPlay();
-        player = new User(readName(), chooseHero());
-        theDungeon = new Dungeon();
+        Hero theHero;
+        Monster theMonster;
+        Dungeon theDungeon = new Dungeon();
+        System.out.println(theDungeon.getCurrentRoom(theDungeon.getHeroX(), theDungeon.getHeroY()));
 
         // Need to move around in the dungeon and then only battle if a room contains a monster essentially.
-
-        do{
-            System.out.println("Hitpoints: " + player.getHero().hitPoints);
-            System.out.println("Pillars Found: " + player.pillars());
-            System.out.println(theDungeon); //change this depending on visibility
-
-
-
-
-        } while (willContinue());
+        do
+        {
+            theHero = chooseHero();
+            move(theHero);
+            theMonster = generateMonster();
+            battle(theHero, theMonster);
+        // Need to add method that checks if the Hero has all of the pillars
+        } while (playAgain());
 
     }//end main method
 
@@ -51,12 +48,6 @@ public class DungeonAdventure {
         System.out.println("To view your inventory press the E key");
         System.out.println("Now, we need to choose your hero.");
     }
-
-    public static String readName()
-    {
-        System.out.print("Enter character name: ");
-        return Keyboard.readString();
-    }//end readName method
 
     /*-------------------------------------------------------------------
     chooseHero allows the user to select a hero, creates that hero, and
@@ -135,12 +126,7 @@ public class DungeonAdventure {
     }//end playAgain method
 
     private static boolean willContinue() {
-        if(theDungeon.getLocation().equals(theDungeon.getExit())) return false;
-        return true;
-    }
-
-    private static boolean hasWon() {
-        return player.pillars() == 4;
+        return false;
     }
 
 
@@ -182,7 +168,7 @@ public class DungeonAdventure {
 
     }//end battle method
 
-    private static void move(Hero theHero) {
+    private static char move(Hero theHero) {
         System.out.println("What direction would you like to go?");
         System.out.println("Forward(w)");
         System.out.println("Left(a)");
@@ -202,7 +188,7 @@ public class DungeonAdventure {
             choice = Keyboard.readChar();
         }
 
-        //return choice;
+        return choice;
 
     }
 

@@ -51,8 +51,8 @@ public class Dungeon
 	private Room[][] grid = new Room[DUNGEON_LENGTH][DUNGEON_WIDTH];//mey need to be swipswapped
 	private Room entrance;
 	private Room exit;
-	//private int HeroX;
-	//private int HeroY;
+	private int HeroX;
+	private int HeroY;
 	private Room location;
 
 
@@ -62,6 +62,8 @@ public class Dungeon
 		placePillars();
 		fillDungeon();
 		this.location = entrance;
+		this.HeroX = 4;
+		this.HeroY = 2;
 
 	}
 
@@ -153,6 +155,40 @@ public class Dungeon
 
 		return str;
 
+	}
+
+	public String getCurrentRoom(int HeroX, int HeroY) {
+		String room = "";
+		if (HeroY == 0) {
+			room = "***\n";
+		}
+		else {
+			room = "*-*\n";
+		}
+		if (HeroX > 0 || HeroX < 4) {
+			room += "|" + grid[HeroX][HeroY].toString() + "|\n";
+		}
+		else if (HeroX == 0 ) {
+			room += "*" + grid[HeroX][HeroY].toString() + "|\n";
+		}
+		else {
+			room += "|" + grid[HeroX][HeroY].toString() + "*\n";
+		}
+		if (HeroY == 4) {
+			room += "***";
+		}
+		else {
+			room+= "*-*";
+		}
+		return room;
+	}
+
+	public int getHeroX() {
+		return this.HeroX;
+	}
+
+	public int getHeroY() {
+		return this.HeroY;
 	}
 
 	public String grid() {
