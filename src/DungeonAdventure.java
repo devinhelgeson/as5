@@ -1,5 +1,16 @@
 public class DungeonAdventure {
 
+    // Gabe created the Room class with it's respective methods for creating a room object
+    // which can contain Dungeon Items, Pillars, or be the entrance or exit depending on the probability method
+    // made that is stored in the utility class. The DungeonItem interface was also created by Gabe as well as the
+    // respective items. The JUnit files were created by Gabe as well as the introduction, howToPlay, and move methods
+    // in DungeonAdventure. The UML was also created by Gabe.
+
+    // Devin created the Hero and Monster Factories as well as the flyweight implementation for Attack. Additionally,
+    // Devin also worked on the Dungeon method and created the fillDungeon, chooseEntrance, choose exit and the
+    // placePillars method. Devin also created two new hero characters (Soldier&Knight( and two new villans
+    // (Bat&Zombie) Devin also created the User class
+
     public static void main(String[] args)
     {
         introduction();
