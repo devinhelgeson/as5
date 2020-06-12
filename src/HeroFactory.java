@@ -1,4 +1,4 @@
-public class HeroFactory {
+public class  HeroFactory {
 
     public static Warrior createWarrior() {
         return new Warrior();
