@@ -11,26 +11,45 @@ public class DungeonAdventure {
     // placePillars method. Devin also created two new hero characters (Soldier&Knight( and two new villans
     // (Bat&Zombie) Devin also created the User class
 
+    public static User player;
+    public static Dungeon theDungeon;
+
      public static void main(String[] args)
     {
         introduction();
         howToPlay();
-        Hero theHero;
-        Monster theMonster;
-        Dungeon theDungeon = new Dungeon();
+        player = new User(readName(), chooseHero());
+        theDungeon = new Dungeon();
         System.out.println(theDungeon.getCurrentRoom(theDungeon.getHeroX(), theDungeon.getHeroY()));
 
         // Need to move around in the dungeon and then only battle if a room contains a monster essentially.
-        do
-        {
-            theHero = chooseHero();
-            move(theHero);
-            theMonster = generateMonster();
-            battle(theHero, theMonster);
+        do{
+            System.out.println("Hitpoints: " + player.getHero().hitPoints);
+            System.out.println("Pillars Found: " + player.pillars());
+            System.out.println(theDungeon); //change this depending on visibility
+
+
+
+
+            } while (willContinue());
         // Need to add method that checks if the Hero has all of the pillars
-        } while (playAgain());
 
     }//end main method
+
+    public static String readName()
+    {
+        System.out.print("Enter character name: ");
+        return Keyboard.readString();
+    }//end readName method
+
+    private static boolean willContinue() {
+        if(theDungeon.getLocation().equals(theDungeon.getExit())) return false;
+        return true;
+    }
+
+    private static boolean hasWon() {
+        return player.pillars() == 4;
+    }
 
     public static void introduction() {
         System.out.println("Welcome, to The Dungeon.");
@@ -125,10 +144,6 @@ public class DungeonAdventure {
         return (again == 'Y' || again == 'y');
     }//end playAgain method
 
-    private static boolean willContinue() {
-        return false;
-    }
-
 
     /*-------------------------------------------------------------------
     battle is the actual combat portion of the game.  It requires a Hero
@@ -168,13 +183,13 @@ public class DungeonAdventure {
 
     }//end battle method
 
-    private static char move(Hero theHero) {
+    private static void move(Hero theHero) {
         System.out.println("What direction would you like to go?");
         System.out.println("Forward(w)");
         System.out.println("Left(a)");
         System.out.println("Right(d)");
         System.out.println("Down(s)");
-
+        //ADD INVENTORY OPTION
         char choice = Keyboard.readChar();
         // Might need to add to the while loop if the direction they choose is out of bounds too.
         while((choice != 'w' )&& (choice != 'a') && (choice != 'd' )&& (choice != 's')) {
@@ -188,8 +203,29 @@ public class DungeonAdventure {
             choice = Keyboard.readChar();
         }
 
-        return choice;
+        if(choice == 'E') {
+            String str = "Inventory: ";
+            for(DungeonItem x : player.getInventory()) {
+                str += x.toString();
+            }
+        }
 
+        try {
+            if(choice == 'a') theDungeon.left();
+            if(choice == 'd') theDungeon.right();
+            if(choice == 'w') theDungeon.up();
+            if(choice == 's') theDungeon.down();
+        } catch(IllegalMoveException e) {
+            System.out.println("You cannot move in this direction.");
+        }
+
+        //return choice;
+
+    }
+
+    public static void updateRoomStatus() {
+        if(theDungeon.getLocation().getItems() == null) return;
+        if(theDungeon.getLocation().containsMonster()) battle(player.getHero(), theDungeon.getLocation().getaMonster());
     }
 
 
