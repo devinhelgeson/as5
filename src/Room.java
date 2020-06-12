@@ -2,6 +2,9 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class Room {
+
+
+
     private int xAxis;
     private int yAxis;
     private Monster aMonster;
@@ -9,10 +12,6 @@ public class Room {
     public final int MAX_ADD = 15;
     private ArrayList<DungeonItem> items = new ArrayList<DungeonItem>();
     // If its 0,5,10,15
-    public Room() {
-        new Room(xAxis, yAxis);
-
-    }
 
     public Room(int xAxis, int yAxis) {
         this.xAxis = xAxis;
@@ -24,6 +23,14 @@ public class Room {
         this.xAxis = x;
         this.yAxis = y;
         this.items.add(item);
+    }
+
+    public int getxAxis() {
+        return xAxis;
+    }
+
+    public int getyAxis() {
+        return yAxis;
     }
 
     public ArrayList<DungeonItem> roomContains() {
@@ -48,6 +55,16 @@ public class Room {
         return (num <= chance);
     }
 
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        if(this == obj) return true;
+        if(!(this instanceof Room)) return false;
+
+        Room another = (Room) obj;
+
+        if(this.xAxis == another.xAxis && this.yAxis == another.yAxis) return true;
+        return false;
+    }
 
     @Override
     public String toString() {

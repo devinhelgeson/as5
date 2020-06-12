@@ -51,15 +51,26 @@ public class Dungeon
 	private Room[][] grid = new Room[DUNGEON_LENGTH][DUNGEON_WIDTH];//mey need to be swipswapped
 	private Room entrance;
 	private Room exit;
-	private int HeroX;
-	private int HeroY;
+	//private int HeroX;
+	//private int HeroY;
+	private Room location;
+
 
 	public Dungeon() {
 		chooseEntrance();
 		chooseExit();
 		placePillars();
 		fillDungeon();
+		this.location = entrance;
 
+	}
+
+	public Room getExit() {
+		return exit;
+	}
+
+	public Room getLocation() {
+		return location;
 	}
 
 	private void fillDungeon() {
@@ -79,11 +90,13 @@ public class Dungeon
 	private void chooseEntrance() {
 		int y = Utilities.randomInt(0, 4);
 		grid[y][0] = new Room(0, y, Entrance.getInstance());
+		this.entrance = grid[y][0];
 	}
 
 	private void chooseExit() {
 		int y = Utilities.randomInt(0, 4);
 		grid[y][4] = new Room(4, y, Exit.getInstance());
+		this.exit = grid[y][4];
 	}
 
 	private void placePillars() {
@@ -155,7 +168,7 @@ public class Dungeon
 	}
 
 	public String getCurrentRoom() {
-return null;
+		return null;
 	}
 
 	public String getWithPotion() {return null;}

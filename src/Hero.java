@@ -41,7 +41,7 @@ public abstract class Hero extends DungeonCharacter
   {
 	super(name, hitPoints, chanceToHit, attack);
 	this.chanceToBlock = chanceToBlock;
-	readName();
+	//readName();
   }
 
 /*-------------------------------------------------------
