@@ -4,16 +4,18 @@ public class DungeonAdventure {
     {
         introduction();
         howToPlay();
-
         Hero theHero;
         Monster theMonster;
+        Dungeon theDungeon = new Dungeon();
 
+        // Need to move around in the dungeon and then only battle if a room contains a monster essentially.
         do
         {
             theHero = chooseHero();
+            move(theHero);
             theMonster = generateMonster();
             battle(theHero, theMonster);
-
+        // Need to add method that checks if the Hero has all of the pillars
         } while (playAgain());
 
     }//end main method
@@ -152,20 +154,20 @@ public class DungeonAdventure {
 
     private static char move(Hero theHero) {
         System.out.println("What direction would you like to go?");
-        System.out.println("Forward(W)");
-        System.out.println("Left(A)");
-        System.out.println("Right(D)");
-        System.out.println("Down(S)");
+        System.out.println("Forward(w)");
+        System.out.println("Left(a)");
+        System.out.println("Right(d)");
+        System.out.println("Down(s)");
 
         char choice = Keyboard.readChar();
         // Might need to add to the while loop if the direction they choose is out of bounds too.
-        while(choice != 'W' || choice != 'A' || choice != 'D' || choice != 'S') {
+        while((choice != 'w' )&& (choice != 'a') && (choice != 'd' )&& (choice != 's')) {
             System.out.println("Not a valid choice, try again.");
             System.out.println("What direction would you like to go?");
-            System.out.println("Forward(W)");
-            System.out.println("Left(A)");
-            System.out.println("Right(D)");
-            System.out.println("Down(S)");
+            System.out.println("Forward(w)");
+            System.out.println("Left(a)");
+            System.out.println("Right(d)");
+            System.out.println("Down(s)");
 
             choice = Keyboard.readChar();
         }

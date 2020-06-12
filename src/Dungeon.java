@@ -44,7 +44,6 @@
 */
 public class Dungeon
 {
-	// yo this is gabe
 
 
 	private int DUNGEON_WIDTH = 5;
