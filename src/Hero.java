@@ -153,4 +153,8 @@ This method is called by: external sources
 		this.numTurns++;
 	}
 
+	public String toString() {
+		return "Name: " + name + "\nHit Points: " + hitPoints + "\n Total Healing Potions: ";
+	}
+
 }//end Hero class
